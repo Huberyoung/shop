@@ -20,6 +20,22 @@ func Init() {
 	userClient = pUser.NewUserClient(conn)
 }
 
+func testGetUserById() {
+	rsp, err := userClient.GetUserById(context.Background(), &pUser.IdRequest{Id: 13})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("\n\nGetUserById: %+v\n", rsp)
+}
+
+func testGetUserByMobile() {
+	rsp, err := userClient.GetUserByMobile(context.Background(), &pUser.MobileRequest{Mobile: "18159567370"})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("\n\nGetUserByMobile: %+v\n", rsp)
+}
+
 func TestGetUserList() {
 	rsp, err := userClient.GetUserList(context.Background(), &pUser.PageInfo{PageNum: 1, PageSize: 2})
 	if err != nil {
@@ -45,6 +61,8 @@ func main() {
 	Init()
 	defer conn.Close()
 	TestGetUserList()
+	testGetUserById()
+	testGetUserByMobile()
 
 	//
 	//for i := 5; i < 7; i++ {
