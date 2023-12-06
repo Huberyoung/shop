@@ -64,7 +64,6 @@ func main() {
 	testGetUserById()
 	testGetUserByMobile()
 
-	//
 	//for i := 5; i < 7; i++ {
 	//	user, err := userClient.CreateUser(context.Background(), &pUser.CreateUserRequest{
 	//		Nickname: fmt.Sprintf("喵喵%d", i),
