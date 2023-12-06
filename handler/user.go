@@ -151,6 +151,6 @@ func (u *UserServer) UpdateUser(ctx context.Context, in *pUser.UpdateUserRequest
 func (u *UserServer) CheckPassword(ctx context.Context, in *pUser.PasswordCheckRequest) (*pUser.PasswordCheckResponse, error) {
 	split := strings.Split(in.EncryptedPassword, "$")
 	options := password.Options{SaltLen: SaltLen, Iterations: Iterations, KeyLen: KeyLen, HashFunction: md5.New}
-	verify := password.Verify(in.Password, split[0], split[1], &options)
+	verify := password.Verify(in.Password, split[1], split[2], &options)
 	return &pUser.PasswordCheckResponse{Success: verify}, nil
 }

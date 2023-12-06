@@ -27,7 +27,7 @@ func TestGetUserList() {
 	}
 
 	for _, user := range rsp.Data {
-		fmt.Printf("id:%d  gender:%d  mobile:%s  password:%s", user.Id, user.Gender, user.Mobile, user.Password)
+		fmt.Printf("id:%d  gender:%d  mobile:%s  password:%s\n\n", user.Id, user.Gender, user.Mobile, user.Password)
 
 		rsp1, err1 := userClient.CheckPassword(context.Background(), &pUser.PasswordCheckRequest{
 			Password:          "123456",
