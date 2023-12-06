@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"log"
-	"shop_srvs/model/starup"
 	pUser "shop_srvs/proto/user"
 	"time"
 )
@@ -22,22 +20,9 @@ func init() {
 	}
 	userClient = pUser.NewUserClient(conn)
 }
-
-func init() {
-	err := starup.SetUpSetting()
-	if err != nil {
-		log.Fatalf("Init.setUpSetting err:%v", err)
-	}
-
-	err = starup.SetUpDBEngine()
-	if err != nil {
-		log.Fatalf("Init.SetUpDBEngine err:%v", err)
-	}
-}
-
 func main() {
 	defer conn.Close()
-	for i := 4; i < 5; i++ {
+	for i := 5; i < 7; i++ {
 		user, err := userClient.CreateUser(context.Background(), &pUser.CreateUserRequest{
 			Nickname: fmt.Sprintf("喵喵%d", i),
 			Password: "123456",

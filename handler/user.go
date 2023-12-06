@@ -124,7 +124,6 @@ func (u *UserServer) CreateUser(ctx context.Context, in *pUser.CreateUserRequest
 
 	pu := ModelToResponse(user1)
 	return &pu, nil
-
 }
 
 // UpdateUser 更新角色信息
