@@ -1,0 +1,15 @@
+Server:
+  RunMode: debug
+  HttpPort: 8081
+DataBase:
+  Username: root
+  Password: root
+  Protocol: tcp
+#  Host: www.hubery.work
+  Host: 110.40.166.88
+  Port: 3306
+  DBName: shop
+  ParseTime: true
+  Charset: utf8mb4
+  Loc: Local
+
