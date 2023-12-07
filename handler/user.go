@@ -104,7 +104,8 @@ func (u *UserServer) CreateUser(ctx context.Context, in *pUser.CreateUserRequest
 		return &pUser.UserInfoResponse{}, status.Errorf(codes.AlreadyExists, "用户已存在")
 	}
 
-	//  单单执行上面的查询没啥问题，把上面的注释去掉，执行下面的插入也可以成功，但这个代码就是报错 record not found
+	//  单单执行上面的查询没啥问题，把上面的注释去掉，执行下面的插入也可以成功，
+	// 但上面查询，查询不到的话，即走到下面的代码的时候就是报错 报 record not found
 	options := password.Options{SaltLen: SaltLen, Iterations: Iterations, KeyLen: KeyLen, HashFunction: md5.New}
 	salt, pwd := password.Encode(in.Password, &options)
 	b := time.Unix(int64(in.BirthDay), 0).Local()
