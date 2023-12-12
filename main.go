@@ -29,7 +29,7 @@ func main() {
 	var port int
 	var ip string
 	flag.StringVar(&ip, "ip", "127.0.01", "ip地址")
-	flag.IntVar(&port, "port", 8080, "端口号")
+	flag.IntVar(&port, "port", 50051, "端口号")
 	address := fmt.Sprintf("%s:%d", ip, port)
 	fmt.Println(address)
 
