@@ -40,7 +40,10 @@ func main() {
 		log.Fatalf("net.Listen err:%s\n", err)
 	}
 
-	global.DBEngine.AutoMigrate(&user.User{})
+	err = global.DBEngine.AutoMigrate(&user.User{})
+	if err != nil {
+		log.Fatalf("global.DBEngine.AutoMigrate err:%s\n", err)
+	}
 
 	err = server.Serve(listen)
 	if err != nil {
