@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"gorm.io/gorm"
 	"strings"
 	"time"
 
@@ -99,7 +100,8 @@ func (u *UserServer) GetUserById(ctx context.Context, in *pUser.IdRequest) (*pUs
 // CreateUser 创建角色
 func (u *UserServer) CreateUser(ctx context.Context, in *pUser.CreateUserRequest) (*pUser.UserInfoResponse, error) {
 	var user mUser.User
-	result := global.DBEngine.Where(&mUser.User{Mobile: in.Mobile}).First(&user)
+	//result := global.DBEngine.Where(mUser.User{Mobile: in.Mobile}).First(&user)
+	result := global.DBEngine.Session(&gorm.Session{NewDB: true}).Where(&mUser.User{Mobile: in.Mobile}).First(&user)
 	if result.RowsAffected > 0 {
 		return &pUser.UserInfoResponse{}, status.Errorf(codes.AlreadyExists, "用户已存在")
 	}
