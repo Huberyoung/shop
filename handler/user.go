@@ -121,8 +121,6 @@ func (u *UserServer) CreateUser(ctx context.Context, in *pUser.CreateUserRequest
 
 	result1 := global.DBEngine.Create(&user1)
 	if result1.Error != nil {
-		fmt.Printf("插入失败：%v\n", result1)
-		fmt.Printf("user1：%v\n", user1)
 		return nil, status.Errorf(codes.Internal, result1.Error.Error())
 	}
 

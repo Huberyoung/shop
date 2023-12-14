@@ -70,7 +70,7 @@ func main() {
 		user, err := userClient.CreateUser(context.Background(), &pUser.CreateUserRequest{
 			Nickname: fmt.Sprintf("喵喵%d", i),
 			Password: "123456",
-			Mobile:   fmt.Sprintf("1815956737%d", i),
+			Mobile:   fmt.Sprintf("1815956736%d", i),
 			Gender:   pUser.CreateUserRequest_MALE.Enum(),
 			BirthDay: uint64(time.Now().Unix()),
 		})

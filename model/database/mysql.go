@@ -21,7 +21,8 @@ func NewMysqlDBEngine(setting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	return db.Set("gorm:table_options", "charset="+setting.Charset), nil
+	//return db.Set("gorm:table_options", "charset="+setting.Charset), nil
+	return db, nil
 }
 
 func Paginate(page, pageSize int) func(db *gorm.DB) *gorm.DB {
